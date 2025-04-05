@@ -57,14 +57,4 @@ class Schedule:
             # Separator line
             print("-" * len(header))
 
-# Example usage
-s1 = Sorter("Math", "Room 101", "8am", "9am", "Mr. Smith", "Monday")
-s2 = Sorter("Biology", "Lab A", "12pm", "1pm", "Dr. Reed", "Wednesday")
-s3 = Sorter("History", "Room 202", "3pm", "4pm", "Mrs. Lane", "Friday")
 
-sched = Schedule()
-sched.add_sorter(s1)
-sched.add_sorter(s2)
-sched.add_sorter(s3)
-
-sched.schedule_print()
