@@ -1,5 +1,6 @@
-from schedule import Schedule
-from sort import Sorter
+# Executive.py
+from Schedule import Schedule  # Import Schedule class from Schedule.py
+from sort import Sorter  # Import Sorter class from sort.py
 
 class Executive:
     def __init__(self):
@@ -13,17 +14,20 @@ class Executive:
             if title.lower() == 'done':
                 break
             location = input("Location: ")
-            time1 = input("Start Time (e.g., 9am): ")
-            time2 = input("End Time (e.g., 10am, leave blank for single time): ")
+            time1 = input("Start Time (e.g., 9:00am, 9:15am, etc.): ")
+            time2 = input("End Time (e.g., 10:00am, 10:15am, leave blank for single time): ")
             teacher = input("Teacher's Name: ")
-            day = input("Day (e.g., Monday): ")
+            days_input = input("Days (e.g., Monday, Wednesday, Friday): ")
+            days = [day.strip() for day in days_input.split(',') if day.strip() in self.schedule.days]
 
-            sorter = Sorter(title, location, time1, time2, teacher, day)
-            try:
-                self.schedule.add_sorter(sorter)
-                print(f"Course '{title}' added to schedule.")
-            except ValueError as e:
-                print(f"Error: {e}")
+            # Add the course for each day
+            for day in days:
+                sorter = Sorter(title, location, time1, time2, teacher, day)
+                try:
+                    self.schedule.add_sorter(sorter)
+                    print(f"Course '{title}' added to schedule for {day}.")
+                except ValueError as e:
+                    print(f"Error: {e}")
 
     def display_schedule(self):
         """Displays the full schedule."""
@@ -36,7 +40,9 @@ class Executive:
         print("\nHere is your final schedule:\n")
         self.display_schedule()
 
+# Execute the program
+if __name__ == "__main__":
+    executive = Executive()
+    executive.run()
 
-main()
-executive = Executive()
-executive.run()
+
