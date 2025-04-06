@@ -1,3 +1,4 @@
+# sort.py
 class Sorter:
     def __init__(self, title, location, time1, time2, teacher, day):
         self.title = title 
@@ -8,7 +9,6 @@ class Sorter:
         self.day = day 
 
     def __str__(self):
-        
         width = 20
         
         time_str = ""
@@ -34,6 +34,7 @@ class Sorter:
 
         x = '\n'.join(line)
         return x
+
  
     
 
